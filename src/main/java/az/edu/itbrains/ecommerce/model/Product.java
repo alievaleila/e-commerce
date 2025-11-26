@@ -13,11 +13,16 @@ public class Product {
 
     private String description;
     private double price;
+    private double discount;
     private String shortDescription;
 
-    @OneToMany
+    @ManyToOne
     private Category category;
 
     @OneToMany(mappedBy = "product")
     private List<Color> colors = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product")
+    private List<Photo> photos = new ArrayList<>();
+
 }
