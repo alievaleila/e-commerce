@@ -15,6 +15,7 @@ public class Product {
     private double price;
     private double discount;
     private String shortDescription;
+    private String barcode;
 
     @ManyToOne
     private Category category;
