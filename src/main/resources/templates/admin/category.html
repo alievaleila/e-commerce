@@ -1,0 +1,248 @@
+<!--<!doctype html>-->
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <title>Bootstrap Table + Modals Template</title>-->
+
+<!--    &lt;!&ndash; Bootstrap 5 CSS (CDN) &ndash;&gt;-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+
+<!--    <style>-->
+<!--        /* Small customizations for a cleaner look */-->
+<!--        body { padding-top: 56px; }-->
+<!--        .table-actions button { margin-right: 6px; }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash; Navbar &ndash;&gt;-->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand" href="#">My Admin</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navMenu">-->
+<!--            <ul class="navbar-nav ms-auto">-->
+<!--                <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--<main class="container">-->
+<!--    <div class="d-flex justify-content-between align-items-center my-4">-->
+<!--        <h1 class="h3">Users</h1>-->
+<!--        <div>-->
+<!--            <button id="btnAdd" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Add user-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Responsive table &ndash;&gt;-->
+<!--    <div class="table-responsive">-->
+<!--        <table id="usersTable" class="table table-hover align-middle">-->
+<!--            <thead class="table-light">-->
+<!--            <tr>-->
+<!--                <th>#</th>-->
+<!--                <th>Name</th>-->
+<!--                <th>Settings</th>-->
+<!--                <th class="text-end">Actions</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            &lt;!&ndash; Sample rows (normally rendered server-side or via JS) &ndash;&gt;-->
+<!--            <tr th:each="category :${categories}">-->
+<!--                <td>1</td>-->
+<!--                <td th:text="${category.name}"class="name">Leyla Əliyeva</td>-->
+<!--                <td>-->
+<!--                    <a href="#" class="btn btn-sm btn-primary">Edit</a>-->
+<!--                    <a href="#" class="btn btn-sm btn-danger">Delete</a>-->
+<!--                </td>-->
+<!--                <td>2025-12-01</td>-->
+<!--                <td class="text-end table-actions">-->
+<!--                    <button class="btn btn-sm btn-outline-secondary btn-edit" data-bs-toggle="modal"-->
+<!--                            data-bs-target="#editModal">Edit-->
+<!--                    </button>-->
+<!--                    <button class="btn btn-sm btn-outline-danger btn-delete" data-bs-toggle="modal"-->
+<!--                            data-bs-target="#confirmDeleteModal">Delete-->
+<!--                    </button>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--</main>-->
+
+<!--&lt;!&ndash; Edit / Add Modal (reused for both) &ndash;&gt;-->
+<!--<div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered">-->
+<!--        <div class="modal-content">-->
+<!--            <form id="editForm">-->
+<!--                <div class="modal-header">-->
+<!--                    <h5 class="modal-title" id="editModalLabel">Add / Edit User</h5>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <input type="hidden" id="userId"/>-->
+
+<!--                    <div class="mb-3">-->
+<!--                        <label for="userName" class="form-label">Name</label>-->
+<!--                        <input id="userName" class="form-control" required>-->
+<!--                    </div>-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="userEmail" class="form-label">Email</label>-->
+<!--                        <input id="userEmail" type="email" class="form-control" required>-->
+<!--                    </div>-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="userRole" class="form-label">Role</label>-->
+<!--                        <select id="userRole" class="form-select">-->
+<!--                            <option>Admin</option>-->
+<!--                            <option>User</option>-->
+<!--                            <option>Viewer</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>-->
+<!--                    <button type="submit" class="btn btn-primary">Save</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Delete confirmation modal &ndash;&gt;-->
+<!--<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-sm modal-dialog-centered">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title">Confirm delete</h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <p class="mb-0">Are you sure you want to delete <strong id="deleteTargetName"></strong>?</p>-->
+<!--                <input name="name" type="hidden" id="deleteTargetId"/>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>-->
+<!--                <button id="confirmDeleteBtn" type="button" class="btn btn-danger">Delete</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Bootstrap 5 JS (Bundle includes Popper) &ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>-->
+
+<!--<script>-->
+<!--    // Simple client-side behavior for demo purposes only-->
+<!--    const usersTable = document.getElementById('usersTable').querySelector('tbody');-->
+<!--    const editModal = document.getElementById('editModal');-->
+<!--    const editForm = document.getElementById('editForm');-->
+
+<!--    // When "Add user" clicked: clear the form-->
+<!--    document.getElementById('btnAdd').addEventListener('click', () => {-->
+<!--      document.getElementById('editModalLabel').textContent = 'Add user';-->
+<!--      editForm.reset();-->
+<!--      document.getElementById('userId').value = '';-->
+<!--    });-->
+
+<!--    // Delegate edit buttons-->
+<!--    usersTable.addEventListener('click', (e) => {-->
+<!--      if (e.target.classList.contains('btn-edit')) {-->
+<!--        const row = e.target.closest('tr');-->
+<!--        const id = row.dataset.id;-->
+<!--        document.getElementById('editModalLabel').textContent = 'Edit user';-->
+<!--        document.getElementById('userId').value = id;-->
+<!--        document.getElementById('userName').value = row.querySelector('.name').textContent.trim();-->
+<!--        document.getElementById('userEmail').value = row.querySelector('.email').textContent.trim();-->
+<!--        document.getElementById('userRole').value = row.querySelector('.role').textContent.trim();-->
+<!--      }-->
+
+<!--      if (e.target.classList.contains('btn-delete')) {-->
+<!--        const row = e.target.closest('tr');-->
+<!--        const id = row.dataset.id;-->
+<!--        const name = row.querySelector('.name').textContent.trim();-->
+<!--        document.getElementById('deleteTargetId').value = id;-->
+<!--        document.getElementById('deleteTargetName').textContent = name;-->
+<!--      }-->
+<!--    });-->
+
+<!--    // Handle form submit (add or update row in table)-->
+<!--    editForm.addEventListener('submit', (ev) => {-->
+<!--      ev.preventDefault();-->
+<!--      const id = document.getElementById('userId').value;-->
+<!--      const name = document.getElementById('userName').value.trim();-->
+<!--      const email = document.getElementById('userEmail').value.trim();-->
+<!--      const role = document.getElementById('userRole').value;-->
+
+<!--      if (id) {-->
+<!--        // Update existing row-->
+<!--        const row = usersTable.querySelector(`tr[data-id='${id}']`);-->
+<!--        if (row) {-->
+<!--          row.querySelector('.name').textContent = name;-->
+<!--          row.querySelector('.email').textContent = email;-->
+<!--          row.querySelector('.role').textContent = role;-->
+<!--        }-->
+<!--      } else {-->
+<!--        // Insert new row (id is simple increment for demo)-->
+<!--        const newId = Date.now();-->
+<!--        const tr = document.createElement('tr');-->
+<!--        tr.dataset.id = newId;-->
+<!--        tr.innerHTML = `-->
+<!--          <td></td>-->
+<!--          <td class="name">${escapeHtml(name)}</td>-->
+<!--          <td class="email">${escapeHtml(email)}</td>-->
+<!--          <td class="role">${escapeHtml(role)}</td>-->
+<!--          <td>${new Date().toISOString().slice(0,10)}</td>-->
+<!--          <td class="text-end table-actions">-->
+<!--            <button class="btn btn-sm btn-outline-secondary btn-edit" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>-->
+<!--            <button class="btn btn-sm btn-outline-danger btn-delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Delete</button>-->
+<!--          </td>-->
+<!--        `;-->
+
+<!--        usersTable.appendChild(tr);-->
+<!--        refreshRowNumbers();-->
+<!--      }-->
+
+<!--      // hide modal programmatically-->
+<!--      const modal = bootstrap.Modal.getInstance(editModal);-->
+<!--      modal.hide();-->
+<!--    });-->
+
+<!--    // Confirm delete-->
+<!--    document.getElementById('confirmDeleteBtn').addEventListener('click', () => {-->
+<!--      const id = document.getElementById('deleteTargetId').value;-->
+<!--      const row = usersTable.querySelector(`tr[data-id='${id}']`);-->
+<!--      if (row) row.remove();-->
+<!--      refreshRowNumbers();-->
+<!--      const delModal = bootstrap.Modal.getInstance(document.getElementById('confirmDeleteModal'));-->
+<!--      delModal.hide();-->
+<!--    });-->
+
+<!--    // Keep first column indexes tidy-->
+<!--    function refreshRowNumbers() {-->
+<!--      Array.from(usersTable.querySelectorAll('tr')).forEach((tr, i) => {-->
+<!--        const cell = tr.querySelector('td');-->
+<!--        if (cell) cell.textContent = i + 1;-->
+<!--      });-->
+<!--    }-->
+
+<!--    // Basic HTML escaping to avoid injecting markup (demo only)-->
+<!--    function escapeHtml(text) {-->
+<!--      return text-->
+<!--        .replaceAll('&', '&amp;')-->
+<!--        .replaceAll('<', '&lt;')-->
+<!--        .replaceAll('>', '&gt;')-->
+<!--        .replaceAll('"', '&quot;')-->
+<!--        .replaceAll("'", '&#39;');-->
+<!--    }-->
+
+<!--    // Initialize row numbers on load-->
+<!--    refreshRowNumbers();-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

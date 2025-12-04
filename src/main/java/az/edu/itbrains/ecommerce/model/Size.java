@@ -7,10 +7,11 @@ public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String size;
     private int quantity;
 
     @ManyToOne
     private Color color;
+
+
 }
