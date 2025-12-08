@@ -10,11 +10,13 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     @Column(length = 1000)
     private String description;
     private double price;
     private double discount;
     private String shortDescription;
+    private String specification;
     private String barcode;
 
     public Product(String barcode, Category category, String description, double discount,

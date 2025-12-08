@@ -13,8 +13,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class PhotoDto {
     private Long id;
-
     private String url;
+    private boolean selected;
 
     @ManyToOne
     private Product product;

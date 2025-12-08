@@ -3,13 +3,11 @@ package az.edu.itbrains.ecommerce.dtos.color;
 import az.edu.itbrains.ecommerce.model.Product;
 import az.edu.itbrains.ecommerce.model.Size;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
