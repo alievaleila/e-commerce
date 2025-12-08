@@ -4,6 +4,7 @@ import az.edu.itbrains.ecommerce.dtos.product.ProductDetailDto;
 import az.edu.itbrains.ecommerce.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -18,8 +19,9 @@ public class ShopController {
     }
 
     @GetMapping("/detail/{id}")
-    public String detail(@PathVariable Long id){
+    public String detail(@PathVariable Long id, Model model){
         ProductDetailDto productDetailDto=productService.getProductDetail(id);
+        model.addAttribute("product",productDetailDto);
         return "shop/detail.html";
     }
 }
