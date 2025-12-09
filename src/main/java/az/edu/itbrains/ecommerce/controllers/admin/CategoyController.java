@@ -7,10 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/dashboard")
 public class CategoyController {
 
     private final CategoryRepository categoryRepository;
@@ -22,44 +24,44 @@ public class CategoyController {
     @GetMapping("/categories")
     public String index(Model model) {
         List<Category> categoryList = categoryRepository.findAll();
-        model.addAttribute("categories", categoryList);
+        model.addAttribute("category", categoryList);
         return "admin/category.html";
     }
 
 
-    @PostMapping("/categories")
+    @PostMapping("/category")
     public String create(Category category) {
         categoryRepository.save(category);
 //        System.out.println(category.getName());
-        return "redirect:categories";
+        return "redirect:category";
     }
 
-    @GetMapping("/categories/{id}")
+    @GetMapping("/category/{id}")
     public String edit(@PathVariable Long id, Model model) {
         Category findCategory = categoryRepository.findById(id).get();
         model.addAttribute("category", findCategory);
         return "admin/category/edit.html";
     }
 
-    @PostMapping("/categories/{id}")
+    @PostMapping("/category/{id}")
     public String edit(@PathVariable Long id ,Category category){
         Category findCategory = categoryRepository.findById(id).get();
         findCategory.setName(category.getName());
         categoryRepository.save(category);
-        return "redirect:categories";
+        return "redirect:category";
     }
-    @GetMapping("/categories/delete/{id}")
+    @GetMapping("/category/delete/{id}")
     public String delete(@PathVariable Long id, Model model) {
         Category findCategory = categoryRepository.findById(id).get();
         model.addAttribute("category", findCategory);
         return "admin/category/delete.html";
     }
 
-    @PostMapping("/categories/delete/{id}")
+    @PostMapping("/category/delete/{id}")
     public String delete(@PathVariable Long id ,Category category){
         Category findCategory = categoryRepository.findById(id).get();
 //        findCategory.setName(category.getName());
         categoryRepository.delete(category);
-        return "redirect:categories";
+        return "redirect:category";
     }
 }

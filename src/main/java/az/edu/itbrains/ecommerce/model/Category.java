@@ -20,7 +20,12 @@ public class Category {
     private Long id;
     private String name;
 
-    public Category(String name) {
+    public Category(String name, String seoUrl) {
         this.name = name;
+        this.seoUrl = seoUrl;
     }
+
+    private String seoUrl;
+
+
 }

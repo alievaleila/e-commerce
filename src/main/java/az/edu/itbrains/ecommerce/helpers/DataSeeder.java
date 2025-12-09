@@ -28,29 +28,30 @@ public class DataSeeder implements CommandLineRunner {
         List<Category> categories = categoryRepository.findAll();
         if (categories.isEmpty()) {
             List<Category> categoryList = List.of(
-                    new Category("Man"),
-                    new Category("Woman"),
-                    new Category("T-Shirts"),
-                    new Category("Hoodies & Sweatshirts"),
-                    new Category("Jeans"),
-                    new Category("Pants & Trousers"),
-                    new Category("Shorts"),
-                    new Category("Jackets & Coats"),
-                    new Category("Suits & Blazers"),
-                    new Category("Shoes"),
-                    new Category("Sneakers"),
-                    new Category("Bags"),
-                    new Category("Accessories"),
-                    new Category("Dresses"),
-                    new Category("Skirts"),
-                    new Category("Blouses"),
-                    new Category("Cardigans"),
-                    new Category("Knitwear"),
-                    new Category("Underwear"),
-                    new Category("Sportswear"),
-                    new Category("Swimwear"),
-                    new Category("Premium Collection")
+                    new Category("Man", "man"),
+                    new Category("Woman", "woman"),
+                    new Category("T-Shirts", "t-shirts"),
+                    new Category("Hoodies & Sweatshirts", "hoodies-sweatshirts"),
+                    new Category("Jeans", "jeans"),
+                    new Category("Pants & Trousers", "pants-trousers"),
+                    new Category("Shorts", "shorts"),
+                    new Category("Jackets & Coats", "jackets-coats"),
+                    new Category("Suits & Blazers", "suits-blazers"),
+                    new Category("Shoes", "shoes"),
+                    new Category("Sneakers", "sneakers"),
+                    new Category("Bags", "bags"),
+                    new Category("Accessories", "accessories"),
+                    new Category("Dresses", "dresses"),
+                    new Category("Skirts", "skirts"),
+                    new Category("Blouses", "blouses"),
+                    new Category("Cardigans", "cardigans"),
+                    new Category("Knitwear", "knitwear"),
+                    new Category("Underwear", "underwear"),
+                    new Category("Sportswear", "sportswear"),
+                    new Category("Swimwear", "swimwear"),
+                    new Category("Premium Collection", "premium-collection")
             );
+
             categoryRepository.saveAll(categoryList);
 
 //            System.out.println("Salam!");

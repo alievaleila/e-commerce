@@ -17,16 +17,23 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final ModelMapper modelMapper;
+
     @Override
     public List<ProductHomeDto> getAllHomeProducts() {
+        List<Product> products = productRepository.findTop8ByOrderByIdDesc();
+        if (!products.isEmpty()) {
+            List<ProductHomeDto> productHomeDtoList = products.stream()
+                    .map(product -> modelMapper.map(product, ProductHomeDto.class)).toList();
+            return productHomeDtoList;
+        }
         return List.of();
     }
 
     @Override
     public ProductDetailDto getProductDetail(Long id) {
-        Product product=productRepository.findById(id).orElseThrow(()->new ResourceNotFoundException(id,"Product"));
-        if(product!=null){
-            return modelMapper.map(product,ProductDetailDto.class);
+        Product product = productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id, "Product"));
+        if (product != null) {
+            return modelMapper.map(product, ProductDetailDto.class);
         }
         return null;
     }

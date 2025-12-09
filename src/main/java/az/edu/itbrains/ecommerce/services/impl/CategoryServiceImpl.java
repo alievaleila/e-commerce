@@ -22,7 +22,7 @@ public class CategoryServiceImpl implements CategoryService {
     public List<CategoryDto> getCategories(){
         List<Category>categories=categoryRepository.findAll();
         if(!categories.isEmpty()){
-            return categories.stream().map(category -> modelMapper.map(category,CategoryDto.class))
+            return categories.stream().map(category -> modelMapper.map(category,CategoryDto.class)).limit(4)
                     .collect(Collectors.toList());
         }
         return List.of();
