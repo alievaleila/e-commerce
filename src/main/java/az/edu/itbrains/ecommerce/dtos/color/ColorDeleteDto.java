@@ -9,8 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ColorDto {
+public class ColorDeleteDto {
     private Long id;
-    private String name;
 }
-

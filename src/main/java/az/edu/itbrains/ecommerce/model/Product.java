@@ -31,8 +31,9 @@ public class Product {
     @ManyToOne
     private Category category;
 
-    @ManyToMany
-    private List<Color>colors=new ArrayList<>();
+    @OneToMany(mappedBy ="product")
+    private List<ColorSize>colorSizes=new ArrayList<>();
+
 
 
     @OneToMany(mappedBy = "product")
