@@ -31,9 +31,6 @@ public class Product {
     private Category category;
 
     @OneToMany(mappedBy = "product")
-    private List<Color> colors = new ArrayList<>();
-
-    @OneToMany(mappedBy = "product")
     private List<Photo> photos = new ArrayList<>();
 
     public Product(String barcode, Category category, String description, double discount,

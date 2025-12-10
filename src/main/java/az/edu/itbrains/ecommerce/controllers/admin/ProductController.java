@@ -1,7 +1,11 @@
 package az.edu.itbrains.ecommerce.controllers.admin;
 
+import az.edu.itbrains.ecommerce.dtos.color.ColorDto;
 import az.edu.itbrains.ecommerce.dtos.product.ProductCreateDto;
 import az.edu.itbrains.ecommerce.dtos.product.ProductUpdateDto;
+import az.edu.itbrains.ecommerce.services.CategoryService;
+import az.edu.itbrains.ecommerce.services.ColorService;
+import az.edu.itbrains.ecommerce.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +14,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/dashboard/product")
 public class ProductController {
+
+    private final ProductService productService;
+    private final CategoryService categoryService;
+    private final ColorService colorService;
 
     @GetMapping
     public String index(Model model){
@@ -22,6 +32,7 @@ public class ProductController {
 
     @PostMapping("/create")
     public String create(ProductCreateDto productCreateDto){
+        List<ColorDto> colorDtoList=colorService.getAllColors();
         return "redirect:/dashboard/product";
     }
 
