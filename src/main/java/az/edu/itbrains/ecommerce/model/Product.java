@@ -36,9 +36,8 @@ public class Product {
     @ManyToOne
     private Category category;
 
-    @OneToMany(mappedBy ="product")
-    private List<ColorSize>colorSizes=new ArrayList<>();
-
+    @OneToMany(mappedBy = "product")
+    private List<ColorSize> colorSizes = new ArrayList<>();
 
 
     @OneToMany(mappedBy = "product")
@@ -53,6 +52,4 @@ public class Product {
         this.price = price;
         this.shortDescription = shortDescription;
     }
-
-
 }

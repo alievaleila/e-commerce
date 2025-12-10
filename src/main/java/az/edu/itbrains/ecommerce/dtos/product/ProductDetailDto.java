@@ -16,8 +16,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductDetailDto {
+
     private Long id;
     private String name;
+
     @Column(length = 1000)
     private String description;
     private double price;

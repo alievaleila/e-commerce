@@ -2,6 +2,7 @@ package az.edu.itbrains.ecommerce.controllers.admin;
 
 import az.edu.itbrains.ecommerce.model.Category;
 import az.edu.itbrains.ecommerce.repositories.CategoryRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +14,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/dashboard")
+@RequiredArgsConstructor
 public class CategoryController {
 
     private final CategoryRepository categoryRepository;
-
-    public CategoryController(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
-    }
 
     @GetMapping("/category")
     public String index(Model model) {
@@ -27,7 +25,6 @@ public class CategoryController {
         model.addAttribute("category", categoryList);
         return "admin/category.html";
     }
-
 
     @PostMapping("/category")
     public String create(Category category) {
@@ -44,12 +41,13 @@ public class CategoryController {
     }
 
     @PostMapping("/category/{id}")
-    public String edit(@PathVariable Long id ,Category category){
+    public String edit(@PathVariable Long id, Category category) {
         Category findCategory = categoryRepository.findById(id).get();
         findCategory.setName(category.getName());
         categoryRepository.save(category);
         return "redirect:category";
     }
+
     @GetMapping("/category/delete/{id}")
     public String delete(@PathVariable Long id, Model model) {
         Category findCategory = categoryRepository.findById(id).get();
@@ -58,7 +56,7 @@ public class CategoryController {
     }
 
     @PostMapping("/category/delete/{id}")
-    public String delete(@PathVariable Long id ,Category category){
+    public String delete(@PathVariable Long id, Category category) {
         Category findCategory = categoryRepository.findById(id).get();
 //        findCategory.setName(category.getName());
         categoryRepository.delete(category);

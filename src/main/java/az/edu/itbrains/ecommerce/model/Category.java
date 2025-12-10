@@ -26,6 +26,4 @@ public class Category {
     }
 
     private String seoUrl;
-
-
 }

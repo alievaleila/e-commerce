@@ -1,7 +1,5 @@
 package az.edu.itbrains.ecommerce.helpers;
 
-import az.edu.itbrains.ecommerce.model.Category;
-import az.edu.itbrains.ecommerce.model.Product;
 import az.edu.itbrains.ecommerce.repositories.CategoryRepository;
 import az.edu.itbrains.ecommerce.repositories.ColorRepository;
 import az.edu.itbrains.ecommerce.repositories.PhotoRepository;
@@ -10,8 +8,6 @@ import az.edu.itbrains.ecommerce.repositories.SizeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor

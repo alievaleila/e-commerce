@@ -13,15 +13,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class ShopController {
 
     private final ProductService productService;
+
     @GetMapping("/shop")
-    public String shop(){
+    public String shop() {
         return "shop/shop.html";
     }
 
     @GetMapping("/detail/{id}")
-    public String detail(@PathVariable Long id, Model model){
-        ProductDetailDto productDetailDto=productService.getProductDetail(id);
-        model.addAttribute("product",productDetailDto);
+    public String detail(@PathVariable Long id, Model model) {
+        ProductDetailDto productDetailDto = productService.getProductDetail(id);
+        model.addAttribute("product", productDetailDto);
         return "shop/detail.html";
     }
 }

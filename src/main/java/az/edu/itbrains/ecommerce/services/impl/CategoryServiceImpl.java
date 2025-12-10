@@ -7,7 +7,6 @@ import az.edu.itbrains.ecommerce.services.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,14 +18,12 @@ public class CategoryServiceImpl implements CategoryService {
     private final ModelMapper modelMapper;
 
     @Override
-    public List<CategoryDto> getCategories(){
-        List<Category>categories=categoryRepository.findAll();
-        if(!categories.isEmpty()){
-            return categories.stream().map(category -> modelMapper.map(category,CategoryDto.class)).limit(4)
+    public List<CategoryDto> getCategories() {
+        List<Category> categories = categoryRepository.findAll();
+        if (!categories.isEmpty()) {
+            return categories.stream().map(category -> modelMapper.map(category, CategoryDto.class)).limit(4)
                     .collect(Collectors.toList());
         }
         return List.of();
-
     }
-
 }

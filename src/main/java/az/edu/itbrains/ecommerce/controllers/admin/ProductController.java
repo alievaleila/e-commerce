@@ -26,19 +26,19 @@ public class ProductController {
     private final ColorService colorService;
 
     @GetMapping
-    public String index(Model model){
+    public String index(Model model) {
         return "admin/product/index.html";
     }
 
     @GetMapping("/create")
-    public String create(Model model){
-        List<ColorDto> colorDtoList=colorService.getAllColors();
-        model.addAttribute("colors",colorDtoList);
+    public String create(Model model) {
+        List<ColorDto> colorDtoList = colorService.getAllColors();
+        model.addAttribute("colors", colorDtoList);
         return "redirect:/dashboard/product";
     }
 
     @PostMapping("/create")
-    public String create(ProductCreateDto productCreateDto){
+    public String create(ProductCreateDto productCreateDto) {
         return "redirect:/dashboard/product";
     }
 
@@ -46,18 +46,14 @@ public class ProductController {
     public String edit(@PathVariable Long id) {
         return "admin/product/edit.html";
     }
+
     @PostMapping("/update/{id}")
     public String edit(@PathVariable Long id, ProductUpdateDto productUpdateDto) {
         return "redirect:/dashboard/product";
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id) {
         return "admin/product/delete.html";
     }
-
-
-
-
-
 }

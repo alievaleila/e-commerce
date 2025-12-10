@@ -12,13 +12,13 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductHomeDto {
     private Long id;
-
     private String description;
     private double price;
     private double discount;

@@ -18,43 +18,42 @@ import java.util.List;
 @RequestMapping("/dashboard/color")
 @RequiredArgsConstructor
 public class ColorController {
+
     private final ColorService colorService;
 
-
     @GetMapping
-    public String index(Model model){
-        List<ColorDto>colorDtoList=colorService.getAllColors();
-        model.addAttribute("colors",colorDtoList);
+    public String index(Model model) {
+        List<ColorDto> colorDtoList = colorService.getAllColors();
+        model.addAttribute("colors", colorDtoList);
         return "admin/color/index.html";
     }
 
     @GetMapping("/create")
-    public String create(){
+    public String create() {
         return "redirect:/dashboard/color";
     }
 
     @PostMapping("/create")
-    public String create(ColorCreateDto colorCreateDto){
-        boolean result=colorService.saveColor(colorCreateDto);
+    public String create(ColorCreateDto colorCreateDto) {
+        boolean result = colorService.saveColor(colorCreateDto);
         return "redirect:/dashboard/color";
     }
 
     @GetMapping("/update/{id}")
-    public String edit(@PathVariable Long id,Model model) {
-        ColorUpdateDto colorUpdateDto=colorService.findUpdatedColor(id);
-        model.addAttribute("color",colorUpdateDto);
+    public String edit(@PathVariable Long id, Model model) {
+        ColorUpdateDto colorUpdateDto = colorService.findUpdatedColor(id);
+        model.addAttribute("color", colorUpdateDto);
         return "admin/color/edit.html";
     }
+
     @PostMapping("/update/{id}")
     public String edit(@PathVariable Long id, ColorUpdateDto colorUpdateDto) {
-        boolean result=colorService.updateColor(id,colorUpdateDto);
+        boolean result = colorService.updateColor(id, colorUpdateDto);
         return "redirect:/dashboard/color";
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id) {
         return "admin/color/delete.html";
     }
-
-
 }

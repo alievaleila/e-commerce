@@ -19,17 +19,23 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductUpdateDto {
-    @Size(min=5,max=50,message="Name must be at least 5 characters and at most 50 characters.")
+
+    @Size(min = 5, max = 50, message = "Name must be at least 5 characters and at most 50 characters.")
     private String name;
+
     @Column(length = 1000)
     private String description;
+
     @NumberFormat
     private double price;
+
     private double discount;
     private String shortDescription;
     private String specification;
-    @Size(min=8,max=8)
+
+    @Size(min = 8, max = 8)
     private String barcode;
+
     @NotBlank(message = "Category can not be null")
     private Long categoryId;
 
