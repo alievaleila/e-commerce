@@ -30,7 +30,7 @@ public class ProductController {
         return "admin/product/index.html";
     }
 
-    @PostMapping("/create")
+    @GetMapping("/create")
     public String create(Model model){
         List<ColorDto> colorDtoList=colorService.getAllColors();
         model.addAttribute("colors",colorDtoList);

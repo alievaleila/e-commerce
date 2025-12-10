@@ -13,11 +13,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/dashboard")
-public class CategoyController {
+public class CategoryController {
 
     private final CategoryRepository categoryRepository;
 
-    public CategoyController(CategoryRepository categoryRepository) {
+    public CategoryController(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 

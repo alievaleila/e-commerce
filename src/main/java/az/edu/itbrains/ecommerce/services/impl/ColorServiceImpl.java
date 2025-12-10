@@ -1,6 +1,8 @@
 package az.edu.itbrains.ecommerce.services.impl;
 
+import az.edu.itbrains.ecommerce.dtos.color.ColorCreateDto;
 import az.edu.itbrains.ecommerce.dtos.color.ColorDto;
+import az.edu.itbrains.ecommerce.dtos.color.ColorUpdateDto;
 import az.edu.itbrains.ecommerce.model.Color;
 import az.edu.itbrains.ecommerce.repositories.ColorRepository;
 import az.edu.itbrains.ecommerce.services.ColorService;
@@ -25,5 +27,32 @@ public class ColorServiceImpl implements ColorService {
             return colors.stream().map(color -> modelMapper.map(color,ColorDto.class)).toList();
         }
         return List.of();
+    }
+
+    @Override
+    public boolean saveColor(ColorCreateDto colorCreateDto) {
+        try{
+            Color color=new Color();
+            color.setName(colorCreateDto.getName());
+            colorRepository.save(color);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public ColorUpdateDto findUpdatedColor(Long id) {
+        Color color=colorRepository.findById(id).orElseThrow();
+        ColorUpdateDto colorUpdateDto=modelMapper.map(color,ColorUpdateDto.class);
+        return colorUpdateDto;
+    }
+
+    @Override
+    public boolean updateColor(Long id, ColorUpdateDto colorUpdateDto) {
+        Color color=colorRepository.findById(id).orElseThrow();
+        color.setName(colorUpdateDto.getName());
+        colorRepository.save(color);
+        return true;
     }
 }
