@@ -31,8 +31,14 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public String create(ProductCreateDto productCreateDto){
+    public String create(Model model){
         List<ColorDto> colorDtoList=colorService.getAllColors();
+        model.addAttribute("colors",colorDtoList);
+        return "redirect:/dashboard/product";
+    }
+
+    @PostMapping("/create")
+    public String create(ProductCreateDto productCreateDto){
         return "redirect:/dashboard/product";
     }
 

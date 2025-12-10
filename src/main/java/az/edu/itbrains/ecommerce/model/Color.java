@@ -21,7 +21,7 @@ public class Color {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "color")
+    @ManyToMany
     private List<Size> sizes = new ArrayList<>();
 
     @ManyToMany

@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,10 @@ public class Product {
 
     @ManyToOne
     private Category category;
+
+    @ManyToMany
+    private List<Color>colors=new ArrayList<>();
+
 
     @OneToMany(mappedBy = "product")
     private List<Photo> photos = new ArrayList<>();

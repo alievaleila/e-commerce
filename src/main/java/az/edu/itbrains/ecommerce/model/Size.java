@@ -14,8 +14,6 @@ public class Size {
     private String size;
     private int quantity;
 
-    @ManyToOne
-    private Color color;
 
 
 }
