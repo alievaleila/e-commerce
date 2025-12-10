@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductCreateDto {
+public class ProductUpdateDto {
     @Size(min=5,max=50,message="Name must be at least 5 characters and at most 50 characters.")
     private String name;
     @Column(length = 1000)

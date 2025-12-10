@@ -1,24 +1,45 @@
 package az.edu.itbrains.ecommerce.controllers.admin;
 
+import az.edu.itbrains.ecommerce.dtos.product.ProductCreateDto;
+import az.edu.itbrains.ecommerce.dtos.product.ProductUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/dashboard")
+@RequestMapping("/dashboard/product")
 public class ProductController {
 
-    @GetMapping("/product")
-    public String index(){
+    @GetMapping
+    public String index(Model model){
         return "admin/product/index.html";
     }
 
-    @GetMapping("/product/create")
-    public String create(){
-        return "admin/product/create.html";
+    @PostMapping("/create")
+    public String create(ProductCreateDto productCreateDto){
+        return "redirect:/dashboard/product";
     }
+
+    @GetMapping("/update/{id}")
+    public String edit(@PathVariable Long id) {
+        return "admin/product/edit.html";
+    }
+    @PostMapping("/update/{id}")
+    public String edit(@PathVariable Long id, ProductUpdateDto productUpdateDto) {
+        return "redirect:/dashboard/product";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Long id){
+        return "admin/product/delete.html";
+    }
+
+
 
 
 

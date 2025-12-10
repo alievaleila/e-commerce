@@ -21,7 +21,7 @@ public class CategoyController {
         this.categoryRepository = categoryRepository;
     }
 
-    @GetMapping("/categories")
+    @GetMapping("/category")
     public String index(Model model) {
         List<Category> categoryList = categoryRepository.findAll();
         model.addAttribute("category", categoryList);
