@@ -2,9 +2,7 @@ package az.edu.itbrains.ecommerce.services.impl;
 
 import az.edu.itbrains.ecommerce.dtos.order.OrderCreateDto;
 import az.edu.itbrains.ecommerce.enums.OrderStatus;
-import az.edu.itbrains.ecommerce.model.Basket;
 import az.edu.itbrains.ecommerce.model.Order;
-import az.edu.itbrains.ecommerce.model.OrderItem;
 import az.edu.itbrains.ecommerce.model.User;
 import az.edu.itbrains.ecommerce.repositories.OrderRepository;
 import az.edu.itbrains.ecommerce.services.BasketService;
@@ -15,9 +13,6 @@ import az.edu.itbrains.ecommerce.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

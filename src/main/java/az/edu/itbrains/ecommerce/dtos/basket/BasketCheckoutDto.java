@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BasketCheckoutDto {
+
     private Long id;
     private Integer quantity;
     private ProductBasketDto productBasketDto;

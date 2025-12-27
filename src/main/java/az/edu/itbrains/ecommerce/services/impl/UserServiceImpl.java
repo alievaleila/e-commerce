@@ -48,8 +48,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserCheckoutDto getUserCheckoutBasket(String email) {
-        User user=userRepository.findByEmail(email);
-        if(user!=null){
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
             return modelMapper.map(user, UserCheckoutDto.class);
         }
         throw new RuntimeException("User not found.");

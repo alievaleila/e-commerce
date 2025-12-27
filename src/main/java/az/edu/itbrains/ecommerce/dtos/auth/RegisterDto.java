@@ -15,16 +15,22 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterDto {
+
     @Size(min = 3, max = 20, message = "Name must be min 3 max 20 symbols.")
     private String name;
+
     @Size(min = 3, max = 20, message = "Name must be min 3 max 20 symbols.")
     private String surname;
+
     @Email(message = "Email must be valid.")
     private String email;
+
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$")
     private String password;
+
     @NotBlank(message = "Confirm password cannot be empty.")
     private String passwordConfirm;
+
     @AssertTrue(message = "Passwords do not match.")
     public boolean isPasswordMatching() {
         return password != null && password.equals(passwordConfirm);

@@ -14,6 +14,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class OrderItemServiceImpl implements OrderItemService {
+
     private final OrderItemRepository orderItemRepository;
 
     @Override
@@ -31,6 +32,5 @@ public class OrderItemServiceImpl implements OrderItemService {
 
         order.setOrderItems(orderItems);
         orderItemRepository.saveAll(orderItems);
-
     }
 }

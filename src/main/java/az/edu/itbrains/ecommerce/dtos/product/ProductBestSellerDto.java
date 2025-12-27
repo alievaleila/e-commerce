@@ -10,8 +10,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductBestSellerDto {
+
     private Long id;
     private String name;
-    private double price;
+    private Double price;
     private String image;
 }

@@ -27,9 +27,9 @@ public class ProductUpdateDto {
     private String description;
 
     @NumberFormat
-    private double price;
+    private Double price;
 
-    private double discount;
+    private Double discount;
     private String shortDescription;
     private String specification;
 

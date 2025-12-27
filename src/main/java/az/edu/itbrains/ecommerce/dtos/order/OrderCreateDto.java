@@ -10,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderCreateDto {
+
     private String address;
     private String phone;
     private String fullAddress;

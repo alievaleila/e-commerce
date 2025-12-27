@@ -23,16 +23,15 @@ public class BasketServiceImpl implements BasketService {
     private final UserService userService;
     private final ProductService productService;
 
-
     @Override
     public void addToCart(String email, BasketAddDto basketAddDto) {
         User user = userService.getByEmail(email);
         Product product = productService.getProductById(basketAddDto.getProductId());
         Basket findBasket = basketRepository.findByUserIdAndProductId(user.getId(), product.getId());
-        if(findBasket != null){
+        if (findBasket != null) {
             findBasket.setQuantity(findBasket.getQuantity() + 1);
             basketRepository.save(findBasket);
-        }else {
+        } else {
             Basket basket = new Basket();
             basket.setUser(user);
             basket.setProduct(product);
@@ -41,8 +40,6 @@ public class BasketServiceImpl implements BasketService {
 
             basketRepository.save(basket);
         }
-
-
     }
 
     @Override
@@ -50,7 +47,7 @@ public class BasketServiceImpl implements BasketService {
         User user = userService.getByEmail(email);
         Product product = productService.getProductById(productId);
         Basket findBasket = basketRepository.findByUserIdAndProductId(user.getId(), product.getId());
-        if(findBasket != null){
+        if (findBasket != null) {
             basketRepository.delete(findBasket);
             return true;
         }
@@ -60,7 +57,7 @@ public class BasketServiceImpl implements BasketService {
     @Override
     public void removeAllItemsByEmail(String email) {
         User user = userService.getByEmail(email);
-        List<Basket> baskets=user.getBaskets();
-        baskets.forEach(basket->basketRepository.delete(basket));
+        List<Basket> baskets = user.getBaskets();
+        baskets.forEach(basket -> basketRepository.delete(basket));
     }
 }

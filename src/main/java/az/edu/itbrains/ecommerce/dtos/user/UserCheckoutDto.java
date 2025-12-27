@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserCheckoutDto {
+
     private Long id;
     private String name;
     private String surname;
@@ -21,5 +22,5 @@ public class UserCheckoutDto {
     private String phone;
     private String address;
 
-    private List<BasketCheckoutDto> baskets= new ArrayList<>();
+    private List<BasketCheckoutDto> baskets = new ArrayList<>();
 }

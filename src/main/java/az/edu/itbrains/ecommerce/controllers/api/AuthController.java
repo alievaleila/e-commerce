@@ -4,7 +4,6 @@ import az.edu.itbrains.ecommerce.dtos.auth.RegisterDto;
 import az.edu.itbrains.ecommerce.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Request;
 import org.springframework.http.RequestEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController(value="apiAuthController")
+@RestController(value = "apiAuthController")
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
@@ -22,12 +21,12 @@ public class AuthController {
 
     @PostMapping("/register")
     public RequestEntity register(@Valid @RequestBody RegisterDto registerDto, BindingResult bindingResult, Model model) {
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             model.addAttribute("registerDto", new RegisterDto());
             return "auth/register.html";
         }
 
-        boolean result=userService.registerUser(registerDto);
+        boolean result = userService.registerUser(registerDto);
         return "redirect:/login";
     }
 }

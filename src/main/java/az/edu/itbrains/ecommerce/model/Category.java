@@ -15,15 +15,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+    private String seoUrl;
 
     public Category(String name, String seoUrl) {
         this.name = name;
         this.seoUrl = seoUrl;
     }
-
-    private String seoUrl;
 }

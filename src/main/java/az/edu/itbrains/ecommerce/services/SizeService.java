@@ -9,6 +9,7 @@ import az.edu.itbrains.ecommerce.payloads.results.Result;
 import java.util.List;
 
 public interface SizeService {
+
     List<SizeDto> getAllSizes();
 
     Result saveSize(SizeCreateDto sizeCreateDto);

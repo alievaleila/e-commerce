@@ -32,8 +32,8 @@ public class ProductController {
 
     @GetMapping
     public String index(Model model) {
-        List<ProductDashboardDto> productDashboardDtoList=productService.getDashboardProducts();
-        model.addAttribute("products",productDashboardDtoList);
+        List<ProductDashboardDto> productDashboardDtoList = productService.getDashboardProducts();
+        model.addAttribute("products", productDashboardDtoList);
         return "admin/product/index.html";
     }
 

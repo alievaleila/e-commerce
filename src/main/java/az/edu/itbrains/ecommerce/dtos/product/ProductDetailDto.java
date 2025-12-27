@@ -22,13 +22,16 @@ public class ProductDetailDto {
 
     @Column(length = 1000)
     private String description;
-    private double price;
-    private double discount;
+
+    private Double price;
+    private Double discount;
     private String shortDescription;
     private String specification;
     private String barcode;
 
     private CategoryDto category;
+
     private List<ColorDto> colors;
+
     private List<PhotoDto> photos;
 }

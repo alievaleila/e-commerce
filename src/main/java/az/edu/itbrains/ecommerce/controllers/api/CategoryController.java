@@ -23,6 +23,7 @@ import java.util.List;
 @RequestMapping("/api/categories")
 @RequiredArgsConstructor
 public class CategoryController {
+
     private final CategoryService categoryService;
 
     @GetMapping
@@ -44,7 +45,7 @@ public class CategoryController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Result> edit(@PathVariable Long id,@RequestBody CategoryUpdateDto categoryUpdateDto) {
+    public ResponseEntity<Result> edit(@PathVariable Long id, @RequestBody CategoryUpdateDto categoryUpdateDto) {
         Result result = categoryService.updateCategory(id, categoryUpdateDto);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

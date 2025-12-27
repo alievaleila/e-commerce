@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class ApiResponse {
+
     private String message;
     private boolean success;
 

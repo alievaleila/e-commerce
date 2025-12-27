@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -32,10 +32,10 @@ public class SecurityConfig {
                 })
                 .formLogin(form -> {
                     form.loginPage("/login");
-                    form.defaultSuccessUrl("/dashboard",true);
+                    form.defaultSuccessUrl("/dashboard", true);
                     form.failureForwardUrl("/");
                 })
-                .logout(logout->{
+                .logout(logout -> {
                     logout.logoutUrl("/logout");
                     logout.logoutSuccessUrl("/");
                 });
@@ -44,7 +44,7 @@ public class SecurityConfig {
 
     }
 
-    public void configure(AuthenticationManagerBuilder auth) throws Exception{
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserDetailService).passwordEncoder(passwordEncoder());
 
     }

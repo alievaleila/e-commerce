@@ -16,6 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ColorSize {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,6 +30,6 @@ public class ColorSize {
     @ManyToOne
     private Product product;
 
-    private int quantity;
+    private Integer quantity;
 
 }

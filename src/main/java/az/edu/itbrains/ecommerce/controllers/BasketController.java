@@ -24,16 +24,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BasketController {
 
-
     private final BasketService basketService;
     private final UserService userService;
     private final OrderService orderService;
 
-
-
     @GetMapping
     @PreAuthorize("isAuthenticated()")
-    public String basket(Principal principal, Model model){
+    public String basket(Principal principal, Model model) {
         String email = principal.getName();
 
         List<BasketUserDto> basketUserDtoList = userService.getUserBasket(email);
@@ -48,7 +45,7 @@ public class BasketController {
 
     @PostMapping("/addToCart")
     @PreAuthorize("isAuthenticated()")
-    public String addToCart(BasketAddDto basketAddDto, Principal principal){
+    public String addToCart(BasketAddDto basketAddDto, Principal principal) {
         String email = principal.getName();
         basketService.addToCart(email, basketAddDto);
 
@@ -57,7 +54,7 @@ public class BasketController {
 
     @GetMapping("/remove/{productId}")
     @PreAuthorize("isAuthenticated()")
-    public String remove(@PathVariable Long productId, Principal principal){
+    public String remove(@PathVariable Long productId, Principal principal) {
         String email = principal.getName();
         boolean result = basketService.removeFromBasket(email, productId);
 
@@ -66,21 +63,20 @@ public class BasketController {
 
     @GetMapping("/checkout")
     @PreAuthorize("isAuthenticated()")
-    public String checkout(Model model, Principal principal){
-        String email=principal.getName();
-        UserCheckoutDto userCheckoutDto=userService.getUserCheckoutBasket(email);
-        model.addAttribute("user",userCheckoutDto);
+    public String checkout(Model model, Principal principal) {
+        String email = principal.getName();
+        UserCheckoutDto userCheckoutDto = userService.getUserCheckoutBasket(email);
+        model.addAttribute("user", userCheckoutDto);
         return "cart/checkout.html";
     }
 
     @PostMapping("/checkout")
     @PreAuthorize("isAuthenticated()")
-    public String checkout(OrderCreateDto orderCreateDto,Principal principal){
-        String email=principal.getName();
+    public String checkout(OrderCreateDto orderCreateDto, Principal principal) {
+        String email = principal.getName();
 
-        boolean result=orderService.createNewOrder(email, orderCreateDto);
+        boolean result = orderService.createNewOrder(email, orderCreateDto);
 
         return "redirect:/basket";
     }
-
 }

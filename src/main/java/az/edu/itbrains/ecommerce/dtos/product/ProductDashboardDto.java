@@ -11,10 +11,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductDashboardDto {
+
     private Long id;
     private String name;
     private String image;
-    private double price;
-    private double discount;
+    private Double price;
+    private Double discount;
     private CategoryDto category;
 }

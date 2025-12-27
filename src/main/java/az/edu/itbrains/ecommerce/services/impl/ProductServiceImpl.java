@@ -71,7 +71,6 @@ public class ProductServiceImpl implements ProductService {
 
         return result.isSuccess() ? new SuccessResult("Product created successfully")
                 : new ErrorResult("Product not created");
-
     }
 
     @Override

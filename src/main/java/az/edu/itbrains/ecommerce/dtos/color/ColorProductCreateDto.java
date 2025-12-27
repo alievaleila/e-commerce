@@ -10,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ColorProductCreateDto {
+
     private Long sizeId;
     private Integer quantity;
 

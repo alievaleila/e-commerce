@@ -62,6 +62,4 @@ public class ColorServiceImpl implements ColorService {
     public Color getColorById(Long colorId) {
         return colorRepository.findById(colorId).orElseThrow();
     }
-
-
 }

@@ -33,6 +33,6 @@ public class CustomUserDetailService implements UserDetailsService {
                     );
             return loggedUser;
         }
-        throw new UsernameNotFoundException("User not found w email "+username);
+        throw new UsernameNotFoundException("User not found w email " + username);
     }
 }

@@ -16,11 +16,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Photo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String url;
-    private boolean selected;
+    private Boolean selected;
 
     @ManyToOne
     private Product product;

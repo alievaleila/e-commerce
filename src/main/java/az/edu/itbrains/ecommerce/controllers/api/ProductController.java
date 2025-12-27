@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController(value="apiProductController")
+@RestController(value = "apiProductController")
 @RequestMapping("/api/products")
 @RequiredArgsConstructor
 public class ProductController {
@@ -19,8 +19,8 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping()
-    public ResponseEntity<List<ProductHomeDto>> products(){
-        List<ProductHomeDto>products=productService.getAllHomeProducts();
+    public ResponseEntity<List<ProductHomeDto>> products() {
+        List<ProductHomeDto> products = productService.getAllHomeProducts();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 }

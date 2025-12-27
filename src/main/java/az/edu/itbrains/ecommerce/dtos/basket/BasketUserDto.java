@@ -11,11 +11,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BasketUserDto {
+
     private Long id;
-    private int quantity;
+    private Integer quantity;
     private Double totalPrice;
     private ProductBasketDto product;
-
 
     public Double getTotalPrice() {
         return product.getPrice() * quantity;

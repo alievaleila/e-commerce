@@ -11,6 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BasketAddDto {
+
     private Long productId;
-    private int quantity;
+    private Integer quantity;
 }

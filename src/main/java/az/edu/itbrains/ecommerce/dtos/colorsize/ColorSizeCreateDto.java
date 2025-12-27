@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ColorSizeCreateDto {
+
     private Long colorId;
     private List<ColorProductCreateDto> productSizes = new ArrayList<>();
 }

@@ -22,6 +22,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ColorSizeServiceImpl implements ColorSizeService {
+
     private final ColorSizeRepository colorSizeRepository;
     private final ModelMapper modelMapper;
     private final ColorService colorService;
@@ -40,8 +41,6 @@ public class ColorSizeServiceImpl implements ColorSizeService {
                     colorSize.setColor(color);
                     colorSize.setQuantity(colorProductCreateDto.getQuantity());
                     colorSize.setSize(size);
-
-
 
                     colorSizeRepository.save(colorSize);
                 }

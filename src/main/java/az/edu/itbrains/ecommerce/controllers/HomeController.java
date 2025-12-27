@@ -25,9 +25,9 @@ public class HomeController {
     public String home(Model model) {
         List<ProductHomeDto> products = productService.getAllHomeProducts();
         List<CategoryDto> categories = categoryService.getAllCategories();
-        List<ProductFeaturedDto>productFeaturedDtoList=productService.getFeaturedProducts();
-        List<ProductHotTrendDto>productHotTrendDtoList=productService.getHotTrendProducts();
-        List<ProductBestSellerDto>productBestSellerDtoList=productService.getBestSellerProducts();
+        List<ProductFeaturedDto> productFeaturedDtoList = productService.getFeaturedProducts();
+        List<ProductHotTrendDto> productHotTrendDtoList = productService.getHotTrendProducts();
+        List<ProductBestSellerDto> productBestSellerDtoList = productService.getBestSellerProducts();
         model.addAttribute("products", products);
         model.addAttribute("categories", categories);
         return "index.html";

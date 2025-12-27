@@ -29,12 +29,12 @@ public class AuthController {
 
     @PostMapping("/register")
     public String register(@Valid RegisterDto registerDto, BindingResult bindingResult, Model model) {
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             model.addAttribute("registerDto", new RegisterDto());
             return "auth/register.html";
         }
 
-        boolean result=userService.registerUser(registerDto);
+        boolean result = userService.registerUser(registerDto);
         return "redirect:/login";
     }
 
