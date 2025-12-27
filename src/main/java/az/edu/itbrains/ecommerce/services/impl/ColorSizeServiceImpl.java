@@ -1,0 +1,55 @@
+package az.edu.itbrains.ecommerce.services.impl;
+
+import az.edu.itbrains.ecommerce.dtos.color.ColorProductCreateDto;
+import az.edu.itbrains.ecommerce.dtos.colorsize.ColorSizeCreateDto;
+import az.edu.itbrains.ecommerce.model.Color;
+import az.edu.itbrains.ecommerce.model.ColorSize;
+import az.edu.itbrains.ecommerce.model.Product;
+import az.edu.itbrains.ecommerce.model.Size;
+import az.edu.itbrains.ecommerce.payloads.results.Result;
+import az.edu.itbrains.ecommerce.payloads.results.error.ErrorResult;
+import az.edu.itbrains.ecommerce.payloads.results.success.SuccessResult;
+import az.edu.itbrains.ecommerce.repositories.ColorSizeRepository;
+import az.edu.itbrains.ecommerce.services.ColorService;
+import az.edu.itbrains.ecommerce.services.ColorSizeService;
+import az.edu.itbrains.ecommerce.services.SizeService;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class ColorSizeServiceImpl implements ColorSizeService {
+    private final ColorSizeRepository colorSizeRepository;
+    private final ModelMapper modelMapper;
+    private final ColorService colorService;
+    private final SizeService sizeService;
+
+    @Override
+    public Result createColorSize(List<ColorSizeCreateDto> colorSizes, Product product) {
+        try {
+            for (ColorSizeCreateDto colorSizeCreateDto : colorSizes) {
+//            colorSize.setProduct(product);
+                for (ColorProductCreateDto colorProductCreateDto : colorSizeCreateDto.getProductSizes()) {
+                    Color color = colorService.getColorById(colorSizeCreateDto.getColorId());
+                    Size size = sizeService.getSizeById(colorProductCreateDto.getSizeId());
+                    ColorSize colorSize = new ColorSize();
+                    colorSize.setProduct(product);
+                    colorSize.setColor(color);
+                    colorSize.setQuantity(colorProductCreateDto.getQuantity());
+                    colorSize.setSize(size);
+
+
+
+                    colorSizeRepository.save(colorSize);
+                }
+            }
+            return new SuccessResult("Color size created successfully.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ErrorResult("Color size not created");
+        }
+    }
+}
