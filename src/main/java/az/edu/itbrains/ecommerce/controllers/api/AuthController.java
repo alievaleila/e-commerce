@@ -4,7 +4,7 @@ import az.edu.itbrains.ecommerce.dtos.auth.RegisterDto;
 import az.edu.itbrains.ecommerce.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +20,7 @@ public class AuthController {
     private final UserService userService;
 
     @PostMapping("/register")
-    public RequestEntity register(@Valid @RequestBody RegisterDto registerDto, BindingResult bindingResult, Model model) {
+    public ResponseEntity register(@Valid @RequestBody RegisterDto registerDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("registerDto", new RegisterDto());
             return "auth/register.html";
